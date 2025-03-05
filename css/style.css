@@ -181,21 +181,24 @@ section {
   position: relative;
   display: inline-block;
 }
-
-.dynamic-part::after {
-  content: "john";
-  animation: switch 4s infinite steps(4);
-  color: #c9d1d9;
-}
-
 .dynamic-part::before {
   content: "";
   position: absolute;
   right: -2px;
   width: 2px;
-  height: 1em;
+  height: 1.2em; /* Adjusted height for better visibility */
   background: #58a6ff;
   animation: blink 1s infinite;
+  opacity: 1; /* Ensure cursor starts visible */
+  z-index: 1; /* Bring cursor to front */
+}
+
+.dynamic-part::after {
+  content: "john";
+  animation: switch 4s infinite steps(4);
+  color: #c9d1d9;
+  position: relative;
+  z-index: 0; /* Keep text behind the cursor */
 }
 
 @keyframes switch {
