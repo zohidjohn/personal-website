@@ -1,0 +1,291 @@
+/* Add this to your existing CSS */
+:root {
+  --dot-size: 400px;
+  --dot-color-1: rgba(88, 166, 255, 0.1);
+  --dot-color-2: rgba(238, 190, 250, 0.1);
+  --dot-color-3: rgba(126, 231, 135, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "SF Mono", "Courier New", monospace;
+}
+
+body {
+  background: #0a0c12;
+  color: #c9d1d9;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.gradient-dots-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.gradient-dot {
+  position: absolute;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  background: radial-gradient(
+    circle at center,
+    var(--dot-color) 0%,
+    transparent 60%
+  );
+  filter: blur(60px);
+  animation: float 12s infinite ease-in-out;
+}
+
+.gradient-dot[data-dot="1"] {
+  --dot-color: var(--dot-color-1);
+  top: var(--pos1-top, 20%);
+  left: var(--pos1-left, 10%);
+}
+
+.gradient-dot[data-dot="2"] {
+  --dot-color: var(--dot-color-2);
+  top: var(--pos2-top, 60%);
+  right: var(--pos2-right, 15%);
+  animation-delay: -4s;
+}
+
+.gradient-dot[data-dot="3"] {
+  --dot-color: var(--dot-color-3);
+  bottom: var(--pos3-bottom, 10%);
+  left: var(--pos3-left, 30%);
+  animation-delay: -8s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+}
+
+.bg-blur {
+  z-index: -3; /* Move behind dots */
+}
+
+/* Blurred background elements */
+.bg-blur {
+  position: fixed;
+  width: 200vw;
+  height: 200vh;
+  background: radial-gradient(
+      circle at 20% 10%,
+      rgba(88, 166, 255, 0.05) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 90%,
+      rgba(88, 166, 255, 0.05) 0%,
+      transparent 50%
+    );
+  filter: blur(80px);
+  z-index: -1;
+}
+
+/* Header Styles */
+header {
+  position: fixed;
+  width: 100%;
+  padding: 1rem;
+  background: rgba(13, 17, 23, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #30363d;
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+nav a {
+  text-decoration: none;
+  color: #c9d1d9;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  background: rgba(22, 27, 34, 0.6);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s;
+}
+
+nav a:hover {
+  border-color: #58a6ff;
+  background: rgba(88, 166, 255, 0.1);
+}
+
+.active-nav {
+  border-color: #58a6ff !important;
+  background: rgba(88, 166, 255, 0.1) !important;
+}
+
+/* Vertical scroll container */
+.section-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  height: 100vh;
+}
+
+section {
+  scroll-snap-align: start;
+  height: 100vh;
+  padding: 6rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #30363d;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+}
+
+.name-animation {
+  font-size: 3.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  position: relative;
+  background: rgba(22, 27, 34, 0.6);
+  backdrop-filter: blur(5px);
+  border: 1px solid #30363d;
+  border-radius: 12px;
+}
+
+.static-part {
+  color: #58a6ff;
+}
+
+.dynamic-part {
+  position: relative;
+  display: inline-block;
+}
+
+.dynamic-part::after {
+  content: "john";
+  animation: switch 4s infinite steps(4);
+  color: #c9d1d9;
+}
+
+.dynamic-part::before {
+  content: "";
+  position: absolute;
+  right: -2px;
+  width: 2px;
+  height: 1em;
+  background: #58a6ff;
+  animation: blink 1s infinite;
+}
+
+@keyframes switch {
+  0%,
+  100% {
+    content: "john";
+  }
+  50% {
+    content: "jon";
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+#about h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Projects Section */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+.project-card {
+  background: rgba(22, 27, 34, 0.6);
+  backdrop-filter: blur(5px);
+  padding: 1.5rem;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.project-card:hover {
+  border-color: #58a6ff;
+  transform: translateY(-5px);
+}
+
+.project-card h3 {
+  margin-bottom: 0.75rem;
+}
+
+.project-card a {
+  color: #58a6ff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#projects h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+#contact h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-card-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  nav {
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+
+  nav a {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .name-animation {
+    font-size: 2rem;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
