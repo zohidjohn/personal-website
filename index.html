@@ -3,114 +3,95 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zohidjon</title>
-    <!-- prettier-ignore -->
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
-    <!-- prettier-ignore -->
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
-    <!-- prettier-ignore -->
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
-    <!-- prettier-ignore -->
-    <link rel="manifest" href="favicon/site.webmanifest" />
-    <!-- prettier-ignore -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <!-- prettier-ignore -->
+    <title>Zohidjon - Full-Stack Developer</title>
+    <!-- Favicon links remain the same -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
     <link rel="stylesheet" href="css/style.css" />
-    <!-- prettier-ignore -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <!-- prettier-ignore -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- prettier-ignore -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="bg-blur"></div>
-    <div class="gradient-dots-container">
-      <div class="gradient-dot" data-dot="1"></div>
-      <div class="gradient-dot" data-dot="2"></div>
-      <div class="gradient-dot" data-dot="3"></div>
-    </div>
-
-    <header>
-      <nav>
-        <a href="#home" class="active-nav">Home</a>
-        <div style="display: flex; gap: 1.5rem">
+    <header class="header">
+      <nav class="nav">
+        <a href="#home" class="nav-brand">Z</a>
+        <div class="nav-links">
           <a href="#about">About</a>
-          <a href="#projects">Projects</a>
+          <a href="#projects">Work</a>
           <a href="#contact">Contact</a>
         </div>
       </nav>
     </header>
 
-    <div class="section-container">
+    <main class="container">
       <section id="home" class="hero">
-        <div class="name-animation">
-          <span class="static-part">Zohid</span
-          ><span class="dynamic-part"></span>
-        </div>
-        <p style="color: #8b949e; margin-top: 1rem">
-          Frontend Developer & Backend Developer
-        </p>
+        <h1 class="hero-title">Full-Stack Developer</h1>
+        <p class="hero-subtitle">Building efficient solutions</p>
       </section>
 
-      <section id="about">
-        <h2>About Me</h2>
-        <div class="project-card" style="max-width: 600px">
-          <p style="color: #8b949e; line-height: 1.6">
-            My name is Zohidjon Ma'rufov. Focused on creating efficient,
-            user-friendly interfaces with clean and maintainable code. And I
-            specialize in frontend and mainly in backend development, ensuring
-            seamless integration and robust performance across the entire stack.
+      <section id="about" class="section">
+        <h2 class="section-title">About</h2>
+        <div class="content-card">
+          <p class="bio">
+            I'm Zohidjon Ma'rufov, specializing in full-stack development with
+            focus on performance and maintainability.
           </p>
+          <div class="skills">
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">JavaScript</span>
         </div>
       </section>
 
-      <section id="projects">
-        <h2>Projects</h2>
-        <div class="project-grid">
-          <div class="project-card">
+      <section id="projects" class="section">
+        <h2 class="section-title">Work</h2>
+        <div class="project-card">
+          <div class="project-header">
             <h3>Password Generator</h3>
-            <p style="color: #8b949e; margin-bottom: 1rem">
-              Simple Password Generator. Vanilla JavaScript, HTML, and CSS.
-            </p>
-            <a href="https://password.zohidjohn.uz/" target="_blank">
-              <i class="fas fa-external-link-alt"></i>
-              Live Demo
-            </a>
-            <a
-              href="https://github.com/zohidjondev/password-generator"
-              target="_blank"
-            >
-              <i class="fas fa-external-link-alt"></i>
-              Source Code
-            </a>
+            <div class="project-links">
+              <a
+                href="https://password.zohidjohn.uz/"
+                target="_blank"
+                class="icon-link"
+              >
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+              <a
+                href="https://github.com/zohidjondev/password-generator"
+                target="_blank"
+                class="icon-link"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
           </div>
+          <p class="project-description">Secure password generation tool</p>
         </div>
       </section>
 
-      <section id="contact">
-        <h2>Contact</h2>
-        <div class="project-card" style="max-width: 600px">
-          <p style="color: #8b949e; line-height: 1.6">
-            Connect with me via email or social media.
-          </p>
-          <div style="margin-top: 1rem" class="project-card-container">
-            <!-- prettier-ignore -->
-            <a href="mailto:zohidjonmarufov2008@gmail.com" class="project-card" target="_blank">
-              <i class="fas fa-envelope"></i> Email
-            </a>
-            <!-- prettier-ignore -->
-            <a href="https://github.com/zohidjondev" target="_blank" class="project-card" >
-              <i class="fab fa-github"></i> GitHub
-            </a>
-            <!-- prettier-ignore -->
-            <a href="https://www.linkedin.com/in/zohidjon/" class="project-card" >
-              <i class="fa-brands fa-linkedin"></i> LinkedIn
-            </a>
-          </div>
+      <section id="contact" class="section">
+        <h2 class="section-title">Connect</h2>
+        <div class="contact-links">
+          <a href="mailto:zohidjonmarufov2008@gmail.com" class="contact-link">
+            <i class="fas fa-envelope"></i>
+            <span>Email</span>
+          </a>
+          <a
+            href="https://github.com/zohidjondev"
+            target="_blank"
+            class="contact-link"
+          >
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/zohidjon/"
+            target="_blank"
+            class="contact-link"
+          >
+            <i class="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
         </div>
       </section>
-    </div>
+    </main>
 
     <script src="js/script.js"></script>
   </body>
