@@ -14,7 +14,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Space Mono", "Courier New", monospace;
+  font-family: "Inter", "Courier New", monospace;
 }
 
 body {
@@ -102,8 +102,11 @@ body {
   padding: var(--compact-padding);
   margin-bottom: 1.2rem;
 }
-
-.project-links a{
+.project-links{
+  display: flex;
+  flex-direction: row;
+}
+.project-links a {
   text-decoration: none;
 }
 
@@ -189,41 +192,41 @@ body {
 
 @media (max-width: 768px) {
   .hero {
-      padding: 3rem 0;
+    padding: 3rem 0;
   }
-  
+
   .section {
-      padding: 2rem 0;
+    padding: 2rem 0;
   }
-  
+
   .nav-links {
-      gap: 1rem;
+    gap: 1rem;
   }
-  
+
   .contact-links {
-      grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 480px) {
   :root {
-      --spacing-unit: 0.6rem;
-      --compact-padding: 1rem;
+    --spacing-unit: 0.6rem;
+    --compact-padding: 1rem;
   }
-  
+
   .hero-title {
-      font-size: 1.8rem;
+    font-size: 1.8rem;
   }
-  
+
   .nav-links {
-      gap: 0.8rem;
+    gap: 0.8rem;
   }
-  
+
   .nav-brand {
-      font-size: 1.1rem;
+    font-size: 1.1rem;
   }
-  
+
   .section-title {
-      font-size: 1.3rem;
+    font-size: 1.3rem;
   }
 }
