@@ -3,110 +3,1346 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zohidjon - Full-Stack Developer</title>
-    <!-- Favicon links remain the same -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <link rel="manifest" href="favicon/site.webmanifest">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>Zohidjon - Developer & Designer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baskervville:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #e0e0e0;
+        --secondary: #b0b0b0;
+        --accent: #4361ee;
+        --light: #121212;
+        --dark: #1e1e1e;
+        --gray: #6c757d;
+        --light-gray: #2a2a2a;
+        --card-bg: #252525;
+        --transition: all 0.3s ease;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        --border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--light);
+        color: var(--primary);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-family: "Baskervville", serif;
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--primary);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 28px;
+        background-color: var(--accent);
+        color: white;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .btn:hover {
+        background-color: #3251d4;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 1px solid var(--accent);
+        color: var(--accent);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--accent);
+        color: white;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+        position: relative;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        display: inline-block;
+        padding-bottom: 15px;
+        position: relative;
+      }
+
+      .section-title h2:after {
+        content: "";
+        position: absolute;
+        width: 80px;
+        height: 3px;
+        background: var(--accent);
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      /* Header */
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: rgba(18, 18, 18, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow);
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+      }
+
+      .nav-brand {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-brand span {
+        color: var(--accent);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-links a {
+        color: var(--secondary);
+        text-decoration: none;
+        font-weight: 500;
+        position: relative;
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--accent);
+      }
+
+      .nav-links a:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--accent);
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover:after,
+      .nav-links a.active:after {
+        width: 100%;
+      }
+
+      .hamburger {
+        display: none;
+        cursor: pointer;
+        color: var(--primary);
+        font-size: 1.5rem;
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 120px 0 80px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-content {
+        max-width: 650px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        line-height: 1.1;
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+        color: var(--accent);
+        margin-bottom: 25px;
+        font-weight: 500;
+      }
+
+      .hero-text {
+        font-size: 1.1rem;
+        margin-bottom: 35px;
+        color: var(--secondary);
+        max-width: 550px;
+      }
+
+      .hero-btns {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .hero-image {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 45%;
+        max-width: 500px;
+        border-radius: 10px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        z-index: 1;
+        opacity: 0.9;
+      }
+
+      .pattern {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(67, 97, 238, 0.1) 0%,
+          rgba(18, 18, 18, 0) 70%
+        );
+        right: -100px;
+        top: -100px;
+        z-index: 0;
+      }
+
+      /* Skills Section */
+      .skills {
+        background-color: var(--dark);
+      }
+
+      .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .skill-category {
+        background: var(--card-bg);
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .skill-category:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      }
+
+      .skill-category h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: var(--accent);
+      }
+
+      .skill-list {
+        list-style: none;
+      }
+
+      .skill-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--light-gray);
+      }
+
+      .skill-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      .skill-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(67, 97, 238, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        color: var(--accent);
+      }
+
+      .skill-name {
+        font-weight: 500;
+        flex: 1;
+      }
+
+      .skill-level {
+        font-weight: 500;
+        color: var(--accent);
+      }
+
+      /* Projects Section */
+      .projects {
+        background-color: var(--light);
+      }
+
+      .projects-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .project-card {
+        background: var(--card-bg);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      .project-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-bottom: 1px solid var(--light-gray);
+      }
+
+      .project-content {
+        padding: 25px;
+      }
+
+      .project-title {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+        color: var(--primary);
+      }
+
+      .project-desc {
+        color: var(--secondary);
+        margin-bottom: 20px;
+        font-size: 0.95rem;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 15px;
+      }
+
+      .project-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .project-link:hover {
+        color: #3251d4;
+      }
+
+      /* Graphic Design Section */
+      .graphic-section {
+        padding: 60px 0;
+        text-align: center;
+        background-color: var(--card-bg);
+      }
+
+      .graphic-content {
+        max-width: 800px;
+        margin: 0 auto 40px;
+      }
+
+      .graphic-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .graphic-content p {
+        font-size: 1.1rem;
+        color: var(--secondary);
+        margin-bottom: 30px;
+      }
+
+      /* Gallery */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 25px;
+      }
+
+      .gallery-item {
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        cursor: pointer;
+        aspect-ratio: 1/1;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+
+      .item-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 20px;
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .gallery-item:hover .item-overlay {
+        opacity: 1;
+      }
+
+      .item-title {
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .item-category {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+      }
+
+      /* Lightbox */
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 2000;
+        padding: 40px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .lightbox.active {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
+      }
+
+      .lightbox-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: scaleUp 0.4s ease forwards;
+      }
+
+      @keyframes scaleUp {
+        from {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .lightbox-img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.8);
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: white;
+        font-size: 40px;
+        cursor: pointer;
+        transition: var(--transition);
+        z-index: 2010;
+      }
+
+      .lightbox-close:hover {
+        color: var(--accent);
+      }
+
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        font-size: 40px;
+        cursor: pointer;
+        background: rgba(30, 30, 30, 0.7);
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: var(--transition);
+        z-index: 2010;
+      }
+
+      .lightbox-nav:hover {
+        background: var(--accent);
+      }
+
+      .lightbox-prev {
+        left: 30px;
+      }
+
+      .lightbox-next {
+        right: 30px;
+      }
+
+      .lightbox-caption {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        color: white;
+        padding: 10px;
+        background: rgba(30, 30, 30, 0.7);
+        border-radius: 4px;
+        max-width: 80%;
+        margin: 0 auto;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: #0a0a0a;
+        color: var(--secondary);
+        padding: 60px 0 30px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 50px;
+      }
+
+      .footer-col h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+        color: var(--primary);
+      }
+
+      .footer-col h3:after {
+        content: "";
+        position: absolute;
+        width: 40px;
+        height: 2px;
+        background: var(--accent);
+        bottom: 0;
+        left: 0;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 12px;
+      }
+
+      .footer-links a {
+        color: var(--secondary);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: var(--primary);
+        padding-left: 5px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .social-links a:hover {
+        background: var(--accent);
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        color: var(--gray);
+        font-size: 0.9rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .hero {
+          padding: 100px 0 60px;
+        }
+
+        .hero-content {
+          max-width: 100%;
+          text-align: center;
+          padding-top: 40px;
+        }
+
+        .hero-image {
+          position: relative;
+          width: 80%;
+          max-width: 400px;
+          margin: 40px auto 0;
+          transform: none;
+          top: auto;
+          right: auto;
+        }
+
+        .hero-btns {
+          justify-content: center;
+        }
+
+        .pattern {
+          display: none;
+        }
+
+        .section-title h2 {
+          font-size: 2.2rem;
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 80px;
+          left: 0;
+          right: 0;
+          background: var(--dark);
+          flex-direction: column;
+          padding: 20px;
+          gap: 15px;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+          text-align: center;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .hamburger {
+          display: block;
+        }
+
+        .hero-title {
+          font-size: 2.8rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.3rem;
+        }
+
+        .hero-btns {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .section-title h2 {
+          font-size: 2rem;
+        }
+
+        .skills-container,
+        .projects-container {
+          grid-template-columns: 1fr;
+        }
+
+        .lightbox-nav {
+          width: 50px;
+          height: 50px;
+          font-size: 30px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero-title {
+          font-size: 2.3rem;
+        }
+
+        .hero {
+          padding: 80px 0 40px;
+        }
+
+        section {
+          padding: 60px 0;
+        }
+
+        .section-title h2 {
+          font-size: 1.8rem;
+        }
+
+        .lightbox-content {
+          max-width: 95%;
+        }
+
+        .lightbox-nav {
+          width: 40px;
+          height: 40px;
+          font-size: 24px;
+        }
+
+        .lightbox-prev {
+          left: 10px;
+        }
+
+        .lightbox-next {
+          right: 10px;
+        }
+      }
+    </style>
   </head>
   <body>
+    <!-- Header -->
     <header class="header">
-      <nav class="nav">
-        <a href="#home" class="nav-brand">Z</a>
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
+      <div class="container">
+        <nav class="nav">
+          <a href="#" class="nav-brand">Z<span>.</span></a>
+          <div class="nav-links">
+            <a href="#" class="active">Home</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#graphics">Graphic Designs</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+          </div>
+        </nav>
+      </div>
     </header>
 
-    <main class="container">
-      <section id="home" class="hero">
-        <h1 class="hero-title">Full-Stack Developer</h1>
-        <p class="hero-subtitle">Building efficient solutions</p>
-      </section>
-
-      <section id="about" class="section">
-        <h2 class="section-title">About</h2>
-        <div class="content-card">
-          <p class="bio">
-            I'm Zohidjon Ma'rufov, specializing in full-stack development with
-            focus on performance and maintainability.
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">Solving Problems with Code & Creativity</h1>
+          <div class="hero-subtitle">Developer & Designer</div>
+          <p class="hero-text">
+            I'm passionate about leveraging technology to solve real-world
+            problems. With expertise in both programming and design, I create
+            solutions that are not only functional but also visually compelling.
           </p>
-          <div class="skills">
-            <span class="skill-tag">HTML</span>
-            <span class="skill-tag">CSS</span>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">Linux/Ubuntu</span>
-            <span class="skill-tag">Git/GitHub</span>
-            <span class="skill-tag">Bash</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">Express.js</span>
-            <span class="skill-tag">REST API</span>
-            <span class="skill-tag">SDLC</span>
+          <div class="hero-btns">
+            <a href="#projects" class="btn">View Projects</a>
+            <a href="#graphics" class="btn btn-outline">Graphic Designs</a>
+          </div>
         </div>
-      </section>
+        <div class="pattern"></div>
+      </div>
+    </section>
 
-      <section id="projects" class="section">
-        <h2 class="section-title">Projects</h2>
-        <div class="project-card">
-          <div class="project-header">
-            <h3>Google.com</h3>
-            <div class="project-links">
-              <a
-                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                target="_blank"
-                class="icon-link"
-              >
-                <i class="fas fa-external-link-alt"></i>
-              </a>
-              <a
-                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                target="_blank"
-                class="icon-link"
-              >
-                <i class="fab fa-github"></i>
-              </a>
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+      <div class="container">
+        <div class="section-title">
+          <h2>Technical Expertise</h2>
+        </div>
+        <div class="skills-container">
+          <div class="skill-category">
+            <h3>Programming</h3>
+            <ul class="skill-list">
+              <li class="skill-item">
+                <div class="skill-icon">
+                  <i class="fab fa-js"></i>
+                </div>
+                <div class="skill-name">JavaScript</div>
+                <div class="skill-level">Intermediate</div>
+              </li>
+              <!-- <li class="skill-item">
+                <div class="skill-icon">
+                  <i class="fab fa-python"></i>
+                </div>
+                <div class="skill-name">Python</div>
+                <div class="skill-level">Beginner</div>
+              </li> -->
+              <!-- <li class="skill-item">
+                <div class="skill-icon">
+                  <i class="fab fa-java"></i>
+                </div>
+                <div class="skill-name">Java</div>
+                <div class="skill-level">Intermediate</div>
+              </li>
+              <li class="skill-item">
+                <div class="skill-icon">
+                  <i class="fas fa-database"></i>
+                </div>
+                <div class="skill-name">SQL</div>
+                <div class="skill-level">Advanced</div>
+              </li> -->
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Web Development</h3>
+            <ul class="skill-list">
+              <li class="skill-item">
+                <div class="skill-icon">
+                  <i class="fab fa-react"></i>
+                </div>
+                <div class="skill-name">React.js</div>
+                <div class="skill-level">Beginner</div>
+              </li>
+              <li class="skill-item">
+                <div class="skill-icon">
+                  <i class="fab fa-node-js"></i>
+                </div>
+                <div class="skill-name">Node.js</div>
+                <div class="skill-level">Beginner</div>
+              </li>
+              <li class="skill-item">
+                <div class="skill-icon">
+                  <i class="fab fa-html5"></i>
+                </div>
+                <div class="skill-name">HTML5 & CSS3</div>
+                <div class="skill-level">Intermediate</div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Design & Tools</h3>
+            <ul class="skill-list">
+              <li class="skill-item">
+                <div class="skill-icon">
+                  <i class="fas fa-paint-brush"></i>
+                </div>
+                <div class="skill-name">Canva Design</div>
+                <div class="skill-level">Intermediate</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+      <div class="container">
+        <div class="section-title">
+          <h2>Featured Projects</h2>
+        </div>
+        <div class="projects-container">
+          <div class="project-card">
+            <img
+              src="thumbnail"
+              alt="Project"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3 class="project-title">Project Title</h3>
+              <p class="project-desc">
+                Project description.
+              </p>
+              <div class="project-links">
+                <a href="#" class="project-link"
+                  ><i class="fas fa-external-link-alt"></i> Live Demo</a
+                >
+                <a href="#" class="project-link"
+                  ><i class="fab fa-github"></i> GitHub</a
+                >
+              </div>
             </div>
           </div>
-          <p class="project-description">Remake of Google.com using HTML, CSS and JavaScript. </p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="contact" class="section">
-        <h2 class="section-title">Connect</h2>
-        <div class="contact-links">
-          <a href="mailto:zohidjonmarufov2008@gmail.com" class="contact-link">
-            <i class="fas fa-envelope"></i>
-            <span>Email</span>
-          </a>
-          <a
-            href="https://github.com/zohidjohn"
-            target="_blank"
-            class="contact-link"
-          >
-            <i class="fab fa-github"></i>
-            <span>GitHub</span>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/zohidjon/"
-            target="_blank"
-            class="contact-link"
-          >
-            <i class="fab fa-linkedin"></i>
-            <span>LinkedIn</span>
-          </a>
+    <!-- Graphic Design Section -->
+    <section class="graphic-section" id="graphics">
+      <div class="container">
+        <div class="section-title">
+          <h2>Graphic Design Portfolio</h2>
         </div>
-      </section>
-    </main>
+        <div class="graphic-content">
+          <p>
+            Hey, I’m super into design as a hobby! I love making clean,
+            appealing thumbnails and visuals. Check out some of my work!
+          </p>
+        </div>
 
-    <script src="js/script.js"></script>
+        <div class="gallery-grid">
+          <!-- Design Items -->
+          <div class="gallery-item" data-index="0">
+            <img src="Images/{i}Code Club Logo.png" alt="{i}Code Club Logo" />
+            <div class="item-overlay">
+              <h3 class="item-title">{i}Code Club Logo</h3>
+              <div class="item-category">{i}Code Club</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="gallery-grid">
+          <div class="gallery-item" data-index="0">
+            <img src="" alt="" />
+            <div class="item-overlay">
+              <h3 class="item-title"></h3>
+              <div class="item-category"></div>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="gallery-grid">
+          <!-- Design Items -->
+          <div class="gallery-item" data-index="0">
+            <img
+              src="Images/SkillForge Club Logo.png"
+              alt="SkillForge Club Logo"
+            />
+            <div class="item-overlay">
+              <h3 class="item-title">SkillForge Club Logo</h3>
+              <div class="item-category">SkillForge</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Design Items -->
+          <div class="gallery-item" data-index="0">
+            <img
+              src="Images/SkillForge Club, Opening Ceremony.png"
+              alt="SkillForge Club, Opening Ceremony"
+            />
+            <div class="item-overlay">
+              <h3 class="item-title">SkillForge Club, Opening Ceremony</h3>
+              <div class="item-category">SkillForge</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Design Items -->
+          <div class="gallery-item" data-index="0">
+            <img src="Images/Zohid's Notes 1.png" alt="Zohid's Notes" />
+            <div class="item-overlay">
+              <h3 class="item-title">
+                <a href="https://t.me/zohidjons/47">Link to Telegram post</a>
+              </h3>
+              <div class="item-category">Zohid's Notes</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Design Items -->
+          <div class="gallery-item" data-index="0">
+            <img src="Images/Zohid's Notes 2.png" alt="Zohid's Notes" />
+            <div class="item-overlay">
+              <h3 class="item-title">
+                <a href="https://t.me/zohidjons/58">Link to Telegram post</a>
+              </h3>
+              <div class="item-category">Zohid's Notes</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Design Items -->
+          <div class="gallery-item" data-index="0">
+            <img src="Images/Zohid's Notes 3.png" alt="Zohid's Notes" />
+            <div class="item-overlay">
+              <h3 class="item-title">
+                <a href="https://t.me/zohidjons/66">Link to Telegram post</a>
+              </h3>
+              <div class="item-category">Zohid's Notes</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Design Items -->
+          <div class="gallery-item" data-index="0">
+            <img src="Images/Zohid's Notes 4.png" alt="Zohid's Notes" />
+            <div class="item-overlay">
+              <h3 class="item-title">
+                <a href="https://t.me/zohidjons/67">Link to Telegram post</a>
+              </h3>
+              <div class="item-category">Zohid's Notes</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Design Items -->
+          <div class="gallery-item" data-index="0">
+            <img src="Images/Zohid's Notes 5.png" alt="Zohid's Notes" />
+            <div class="item-overlay">
+              <h3 class="item-title">
+                <a href="https://t.me/zohidjons/71">Link to Telegram post</a>
+              </h3>
+              <div class="item-category">Zohid's Notes</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Design Items -->
+          <div class="gallery-item" data-index="0">
+            <img src="Images/Zohid's Notes 6.png" alt="Zohid's Notes" />
+            <div class="item-overlay">
+              <h3 class="item-title">
+                <a href="https://t.me/zohidjons/68">Link to Telegram post</a>
+              </h3>
+              <div class="item-category">Zohid's Notes</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Design Items -->
+          <div class="gallery-item" data-index="0">
+            <img src="Images/Zohid's Notes 7.png" alt="Zohid's Notes" />
+            <div class="item-overlay">
+              <h3 class="item-title">
+                <a href="https://t.me/zohidjons/72">Link to Telegram post</a>
+              </h3>
+              <div class="item-category">Zohid's Notes</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Design Items -->
+          <div class="gallery-item" data-index="0">
+            <img src="Images/Zohid's Notes 8.png" alt="Zohid's Notes" />
+            <div class="item-overlay">
+              <h3 class="item-title">
+                <a href="https://t.me/zohidjons/73">Link to Telegram post</a>
+              </h3>
+              <div class="item-category">Zohid's Notes</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Design Items -->
+          <div class="gallery-item" data-index="0">
+            <img
+              src="Images/Ibrat Debate Beshariq, Presentation .png"
+              alt="Ibrat Debate Beshariq, Presentation"
+            />
+            <div class="item-overlay">
+              <h3 class="item-title">Ibrat Debate Beshariq, Presentation</h3>
+              <div class="item-category">Ibrat Debate</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Design Items -->
+          <div class="gallery-item" data-index="0">
+            <img
+              src="Images/Ibrat Debate Beshariq, Presentation.png"
+              alt="Ibrat Debate Beshariq, Presentation"
+            />
+            <div class="item-overlay">
+              <h3 class="item-title">Ibrat Debate Beshariq, Presentation</h3>
+              <div class="item-category">Ibrat Debate</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Design Items -->
+          <div class="gallery-item" data-index="0">
+            <img
+              src="Images/Ibrat Debate, Badge.png"
+              alt="Ibrat Debate, Badge"
+            />
+            <div class="item-overlay">
+              <h3 class="item-title">Ibrat Debate, Badge</h3>
+              <div class="item-category">Ibrat Debate</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Design Items -->
+          <div class="gallery-item" data-index="0">
+            <img
+              src="Images/Ibrat Debate, Posts for Telegram.png"
+              alt="Ibrat Debate, Posts for Telegram"
+            />
+            <div class="item-overlay">
+              <h3 class="item-title">/Ibrat Debate, Posts for Telegram</h3>
+              <div class="item-category">Ibrat Debate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <span class="lightbox-close" id="lightbox-close">&times;</span>
+      <div class="lightbox-content">
+        <span class="lightbox-nav lightbox-prev" id="lightbox-prev"
+          >&#10094;</span
+        >
+        <img class="lightbox-img" id="lightbox-img" />
+        <span class="lightbox-nav lightbox-next" id="lightbox-next"
+          >&#10095;</span
+        >
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <h3>Zohidjon</h3>
+            <p>
+              Solving problems through technology and design. Creating solutions
+              that make a difference.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h3>Navigation</h3>
+            <ul class="footer-links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#graphics">Graphic Designs</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Contact</h3>
+            <ul class="footer-links">
+              <li><i class="fas fa-envelope"></i> zohidjon@zohidjohn.uz</li>
+              <li><i class="fas fa-map-marker-alt"></i> Fergana, Uzbekistan</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>
+            &copy; 2025 Zohidjon. All rights reserved. Designed with ❤️ and
+            code.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile Navigation
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth <= 768) {
+            navLinks.classList.remove("active");
+          }
+        });
+      });
+
+      // Lightbox functionality
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const lightboxCaption = document.getElementById("lightbox-caption");
+      const closeBtn = document.getElementById("lightbox-close");
+      const prevBtn = document.getElementById("lightbox-prev");
+      const nextBtn = document.getElementById("lightbox-next");
+
+      let currentIndex = 0;
+      const galleryItems = Array.from(
+        document.querySelectorAll(".gallery-item")
+      );
+
+      function openLightbox(index) {
+        currentIndex = index;
+        const imgSrc = galleryItems[index].querySelector("img").src;
+        const caption =
+          galleryItems[index].querySelector(".item-title").textContent;
+
+        lightboxImg.src = imgSrc;
+        lightboxCaption.textContent = caption;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      function navigate(direction) {
+        currentIndex += direction;
+        if (currentIndex < 0) currentIndex = galleryItems.length - 1;
+        if (currentIndex >= galleryItems.length) currentIndex = 0;
+        openLightbox(currentIndex);
+      }
+
+      // Add click event to all gallery images
+      galleryItems.forEach((item, index) => {
+        item.addEventListener("click", () => {
+          openLightbox(index);
+        });
+      });
+
+      closeBtn.addEventListener("click", closeLightbox);
+      prevBtn.addEventListener("click", () => navigate(-1));
+      nextBtn.addEventListener("click", () => navigate(1));
+
+      // Close lightbox when clicking outside the image
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      // Keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        if (lightbox.classList.contains("active")) {
+          if (e.key === "Escape") closeLightbox();
+          if (e.key === "ArrowLeft") navigate(-1);
+          if (e.key === "ArrowRight") navigate(1);
+        }
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+    </script>
   </body>
 </html>
