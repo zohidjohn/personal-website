@@ -1,1348 +1,889 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zohidjon - Developer & Designer</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
+    <title>Zohidjon — SWE Student, Telegram Bot & Web App Developer</title>
+
+    <!-- Primary SEO -->
+    <meta
+      name="description"
+      content="SWE student from Uzbekistan building minimal web apps and Telegram bots with Node.js. Clean UX, open-source projects, and live demos."
+    />
+    <meta name="author" content="Zohidjon Ma’rufov" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://zohidjohn.uz/" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Zohidjon Portfolio" />
+    <meta
+      property="og:title"
+      content="Zohidjon — SWE Student, Telegram Bot & Web App Developer"
+    />
+    <meta
+      property="og:description"
+      content="SWE student from Uzbekistan building minimal web apps and Telegram bots with Node.js. Clean UX, open-source projects, and live demos."
+    />
+    <meta property="og:url" content="https://zohidjohn.uz/" />
+    <meta property="og:image" content="https://zohidjohn.uz/og.jpg" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- Replace below with your real handle if you have one -->
+    <meta name="twitter:site" content="@ZohidjonMarufov" />
+    <meta name="twitter:creator" content="@ZohidjonMarufov" />
+    <meta name="twitter:image" content="https://zohidjohn.uz/og.jpg" />
+    <meta name="theme-color" content="#1b4d3e" />
+
+    <!-- i18n (add /uz and /ru when ready) -->
+    <link rel="alternate" href="https://zohidjohn.uz/" hreflang="en" />
+    <link rel="alternate" href="https://zohidjohn.uz/" hreflang="x-default" />
+
+    <!-- Hints & plumbing -->
+    <link
+      rel="sitemap"
+      type="application/xml"
+      title="Sitemap"
+      href="favicons/site.webmanifest"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="favicons/site.webmanifest" />
+    <link rel="preload" as="image" href="/og.jpg" fetchpriority="high" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Baskervville:ital,wght@0,400..700;1,400..700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
+
     <style>
       :root {
-        --primary: #e0e0e0;
-        --secondary: #b0b0b0;
-        --accent: #4361ee;
-        --light: #121212;
-        --dark: #1e1e1e;
-        --gray: #6c757d;
-        --light-gray: #2a2a2a;
-        --card-bg: #252525;
-        --transition: all 0.3s ease;
-        --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        --border: 1px solid rgba(255, 255, 255, 0.08);
+        /* Base (single light theme) */
+        --bg: #ffffff;
+        --fg: #0f172a;
+        --muted: #64748b;
+        --ring: #e2e8f0;
+        --card: #f8fafc;
+        --accent: #1b4d3e;
+        --accent-ink: #0e2d25;
+        --ok: #16a34a;
+        --warn: #f59e0b;
+        --err: #ef4444;
+
+        /* Solid header/menu when mobile menu is open */
+        --header-solid: #ffffff;
+
+        /* Mobile overlay (light) */
+        --overlay-solid: #ffffff; /* base bg */
+        --overlay-ink: #0f172a; /* text/icons */
+        --overlay-tint1: rgba(37, 99, 235, 0.14); /* bluish glow */
+        --overlay-tint2: rgba(0, 0, 0, 0.06); /* bottom fade */
+        --overlay-btn-bg: rgba(0, 0, 0, 0.04);
+        --overlay-btn-border: rgba(0, 0, 0, 0.12);
       }
 
       * {
-        margin: 0;
-        padding: 0;
         box-sizing: border-box;
       }
-
+      html,
       body {
-        font-family: "Inter", sans-serif;
-        background-color: var(--light);
-        color: var(--primary);
-        line-height: 1.6;
-        overflow-x: hidden;
+        height: 100%;
       }
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5 {
-        font-family: "Baskervville", serif;
-        font-weight: 700;
-        line-height: 1.2;
-        color: var(--primary);
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto,
+          Helvetica, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--fg);
       }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      .btn {
-        display: inline-block;
-        padding: 12px 28px;
-        background-color: var(--accent);
-        color: white;
-        border-radius: 4px;
+      a {
+        color: inherit;
         text-decoration: none;
-        font-weight: 500;
-        transition: var(--transition);
-        border: none;
-        cursor: pointer;
-        font-size: 1rem;
+      }
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 24px;
       }
 
-      .btn:hover {
-        background-color: #3251d4;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+      @media (max-width: 720px) {
+        .wrap {
+          padding: 16px;
+        }
+        h1 {
+          font-size: clamp(24px, 6vw, 32px);
+        }
+        .nav .btn.small {
+          padding: 8px 10px;
+        }
       }
 
-      .btn-outline {
-        background: transparent;
-        border: 1px solid var(--accent);
-        color: var(--accent);
-      }
-
-      .btn-outline:hover {
-        background-color: var(--accent);
-        color: white;
-      }
-
-      section {
-        padding: 80px 0;
-      }
-
-      .section-title {
-        text-align: center;
-        margin-bottom: 60px;
-        position: relative;
-      }
-
-      .section-title h2 {
-        font-size: 2.5rem;
-        display: inline-block;
-        padding-bottom: 15px;
-        position: relative;
-      }
-
-      .section-title h2:after {
-        content: "";
-        position: absolute;
-        width: 80px;
-        height: 3px;
-        background: var(--accent);
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      /* Header */
-      .header {
+      /* Header / Navbar */
+      header {
         position: sticky;
         top: 0;
-        z-index: 1000;
-        background-color: rgba(18, 18, 18, 0.95);
-        backdrop-filter: blur(10px);
-        box-shadow: var(--shadow);
+        z-index: 50;
+        backdrop-filter: saturate(180%) blur(6px);
+        background: color-mix(in oklab, var(--bg), transparent 10%);
+        border-bottom: 1px solid var(--ring);
       }
-
       .nav {
         display: flex;
+        align-items: center;
         justify-content: space-between;
-        align-items: center;
-        padding: 20px 0;
+        gap: 12px;
       }
-
-      .nav-brand {
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: var(--primary);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
+      .brand {
+        font-weight: 800;
+        letter-spacing: 0.2px;
       }
-
-      .nav-brand span {
-        color: var(--accent);
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 30px;
-      }
-
-      .nav-links a {
-        color: var(--secondary);
-        text-decoration: none;
-        font-weight: 500;
-        position: relative;
-        transition: var(--transition);
-      }
-
-      .nav-links a:hover,
-      .nav-links a.active {
-        color: var(--accent);
-      }
-
-      .nav-links a:after {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: -5px;
-        left: 0;
-        background-color: var(--accent);
-        transition: var(--transition);
-      }
-
-      .nav-links a:hover:after,
-      .nav-links a.active:after {
-        width: 100%;
-      }
-
-      .hamburger {
-        display: none;
-        cursor: pointer;
-        color: var(--primary);
-        font-size: 1.5rem;
-      }
-
-      /* Hero Section */
-      .hero {
-        padding: 120px 0 80px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero-content {
-        max-width: 650px;
-        position: relative;
-        z-index: 2;
-      }
-
-      .hero-title {
-        font-size: 3.5rem;
-        margin-bottom: 20px;
-        line-height: 1.1;
-      }
-
-      .hero-subtitle {
-        font-size: 1.5rem;
-        color: var(--accent);
-        margin-bottom: 25px;
-        font-weight: 500;
-      }
-
-      .hero-text {
-        font-size: 1.1rem;
-        margin-bottom: 35px;
-        color: var(--secondary);
-        max-width: 550px;
-      }
-
-      .hero-btns {
-        display: flex;
-        gap: 15px;
-        flex-wrap: wrap;
-      }
-
-      .hero-image {
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 45%;
-        max-width: 500px;
-        border-radius: 10px;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        z-index: 1;
-        opacity: 0.9;
-      }
-
-      .pattern {
-        position: absolute;
-        width: 600px;
-        height: 600px;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(67, 97, 238, 0.1) 0%,
-          rgba(18, 18, 18, 0) 70%
-        );
-        right: -100px;
-        top: -100px;
-        z-index: 0;
-      }
-
-      /* Skills Section */
-      .skills {
-        background-color: var(--dark);
-      }
-
-      .skills-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-      }
-
-      .skill-category {
-        background: var(--card-bg);
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: var(--shadow);
-        transition: var(--transition);
-      }
-
-      .skill-category:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-      }
-
-      .skill-category h3 {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-        color: var(--accent);
-      }
-
-      .skill-list {
-        list-style: none;
-      }
-
-      .skill-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid var(--light-gray);
-      }
-
-      .skill-item:last-child {
-        margin-bottom: 0;
-        padding-bottom: 0;
-        border-bottom: none;
-      }
-
-      .skill-icon {
-        width: 40px;
-        height: 40px;
-        background: rgba(67, 97, 238, 0.1);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 15px;
-        color: var(--accent);
-      }
-
-      .skill-name {
-        font-weight: 500;
-        flex: 1;
-      }
-
-      .skill-level {
-        font-weight: 500;
-        color: var(--accent);
-      }
-
-      /* Projects Section */
-      .projects {
-        background-color: var(--light);
-      }
-
-      .projects-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 30px;
-      }
-
-      .project-card {
-        background: var(--card-bg);
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        transition: var(--transition);
-      }
-
-      .project-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-      }
-
-      .project-img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-bottom: 1px solid var(--light-gray);
-      }
-
-      .project-content {
-        padding: 25px;
-      }
-
-      .project-title {
-        font-size: 1.4rem;
-        margin-bottom: 15px;
-        color: var(--primary);
-      }
-
-      .project-desc {
-        color: var(--secondary);
-        margin-bottom: 20px;
-        font-size: 0.95rem;
-      }
-
-      .project-links {
-        display: flex;
-        gap: 15px;
-      }
-
-      .project-link {
+      .nav-actions {
         display: flex;
         align-items: center;
         gap: 8px;
-        color: var(--accent);
-        text-decoration: none;
-        font-weight: 500;
-        transition: var(--transition);
+        flex-wrap: nowrap;
+        white-space: nowrap;
       }
+      .menu-btn {
+        display: none !important;
+      } /* hidden on desktop */
 
-      .project-link:hover {
-        color: #3251d4;
-      }
-
-      /* Graphic Design Section */
-      .graphic-section {
-        padding: 60px 0;
-        text-align: center;
-        background-color: var(--card-bg);
-      }
-
-      .graphic-content {
-        max-width: 800px;
-        margin: 0 auto 40px;
-      }
-
-      .graphic-content h2 {
-        font-size: 2.5rem;
-        margin-bottom: 20px;
-      }
-
-      .graphic-content p {
-        font-size: 1.1rem;
-        color: var(--secondary);
-        margin-bottom: 30px;
-      }
-
-      /* Gallery */
-      .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 25px;
-      }
-
-      .gallery-item {
-        position: relative;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        transition: var(--transition);
-        cursor: pointer;
-        aspect-ratio: 1/1;
-      }
-
-      .gallery-item:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
-      }
-
-      .gallery-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: var(--transition);
-      }
-
-      .gallery-item:hover img {
-        transform: scale(1.05);
-      }
-
-      .item-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.6);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 20px;
-        opacity: 0;
-        transition: var(--transition);
-      }
-
-      .gallery-item:hover .item-overlay {
-        opacity: 1;
-      }
-
-      .item-title {
-        color: white;
-        font-size: 1.2rem;
+      .btn {
+        appearance: none;
+        border: 1px solid var(--ring);
+        background: var(--bg);
+        color: var(--fg);
+        padding: 10px 14px;
+        border-radius: 12px;
         font-weight: 600;
-        margin-bottom: 5px;
-      }
-
-      .item-category {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 0.9rem;
-      }
-
-      /* Lightbox */
-      .lightbox {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.95);
-        z-index: 2000;
-        padding: 40px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .lightbox.active {
-        display: flex;
-        justify-content: center;
+        line-height: 1;
+        display: inline-flex;
         align-items: center;
-        opacity: 1;
+        gap: 8px;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+        transition: transform 0.06s ease, background 0.2s ease, color 0.2s ease,
+          border-color 0.2s ease;
       }
-
-      .lightbox-content {
-        position: relative;
-        max-width: 90%;
-        max-height: 90vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        animation: scaleUp 0.4s ease forwards;
+      .btn:hover {
+        transform: translateY(-1px);
       }
-
-      @keyframes scaleUp {
-        from {
-          transform: scale(0.8);
-          opacity: 0;
-        }
-        to {
-          transform: scale(1);
-          opacity: 1;
-        }
-      }
-
-      .lightbox-img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
-        border-radius: 8px;
-        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.8);
-      }
-
-      .lightbox-close {
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        color: white;
-        font-size: 40px;
-        cursor: pointer;
-        transition: var(--transition);
-        z-index: 2010;
-      }
-
-      .lightbox-close:hover {
-        color: var(--accent);
-      }
-
-      .lightbox-nav {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        color: white;
-        font-size: 40px;
-        cursor: pointer;
-        background: rgba(30, 30, 30, 0.7);
-        width: 60px;
-        height: 60px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        transition: var(--transition);
-        z-index: 2010;
-      }
-
-      .lightbox-nav:hover {
+      .btn.primary {
         background: var(--accent);
+        color: #fff;
+        border-color: transparent;
+      }
+      .btn.ghost {
+        background: transparent;
+      }
+      .btn.small {
+        padding: 8px 10px;
+        border-radius: 10px;
+        font-weight: 700;
       }
 
-      .lightbox-prev {
-        left: 30px;
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        border: 1px solid var(--ring);
+        background: var(--card);
+      }
+      .chip {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: var(--card);
+        border: 1px solid var(--ring);
+        font-size: 0.75rem;
+        color: var(--muted);
       }
 
-      .lightbox-next {
-        right: 30px;
+      .hero {
+        padding: 48px 0 20px;
+      }
+      h1 {
+        font-size: clamp(28px, 4vw, 38px);
+        margin: 8px 0 12px;
+      }
+      p.lead {
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+      .cta {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 18px;
       }
 
-      .lightbox-caption {
-        position: absolute;
-        bottom: 20px;
-        left: 0;
-        right: 0;
-        text-align: center;
-        color: white;
-        padding: 10px;
-        background: rgba(30, 30, 30, 0.7);
-        border-radius: 4px;
-        max-width: 80%;
-        margin: 0 auto;
+      section {
+        margin: 32px 0;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--ring);
+        border-radius: 16px;
+        padding: 18px;
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.04);
+      }
+
+      /* Projects */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 14px;
+      }
+      @media (max-width: 720px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .project {
+        cursor: pointer;
+        transition: transform 0.12s ease, box-shadow 0.15s ease,
+          border-color 0.15s ease;
+      }
+      .project:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      }
+      .project h3 {
+        margin: 6px 0 6px;
+        font-size: 1.05rem;
+      }
+      .project .meta {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 8px 0;
+      }
+      .project .links {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+      .pill {
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        border: 1px solid var(--ring);
+        background: var(--bg);
+      }
+      .pill.os {
+        border-color: color-mix(in oklab, var(--ok), var(--ring) 60%);
+      }
+      .pill.cs {
+        border-color: color-mix(in oklab, var(--err), var(--ring) 60%);
+      }
+
+      /* Modal */
+      dialog {
+        width: min(760px, 92vw);
+        border: none;
+        border-radius: 16px;
+        padding: 0;
+        background: var(--bg);
+        color: var(--fg);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+      }
+      dialog::backdrop {
+        background: rgba(0, 10, 30, 0.55);
+      }
+      .modal-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 18px;
+        border-bottom: 1px solid var(--ring);
+      }
+      .modal-body {
+        padding: 18px;
       }
 
       /* Footer */
-      .footer {
-        background-color: #0a0a0a;
-        color: var(--secondary);
-        padding: 60px 0 30px;
-      }
-
-      .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 40px;
-        margin-bottom: 50px;
-      }
-
-      .footer-col h3 {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-        position: relative;
-        padding-bottom: 10px;
-        color: var(--primary);
-      }
-
-      .footer-col h3:after {
-        content: "";
-        position: absolute;
-        width: 40px;
-        height: 2px;
-        background: var(--accent);
-        bottom: 0;
-        left: 0;
-      }
-
-      .footer-links {
-        list-style: none;
-      }
-
-      .footer-links li {
-        margin-bottom: 12px;
-      }
-
-      .footer-links a {
-        color: var(--secondary);
-        text-decoration: none;
-        transition: var(--transition);
-      }
-
-      .footer-links a:hover {
-        color: var(--primary);
-        padding-left: 5px;
-      }
-
-      .social-links {
-        display: flex;
-        gap: 15px;
-        margin-top: 20px;
-      }
-
-      .social-links a {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.05);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--primary);
-        text-decoration: none;
-        transition: var(--transition);
-      }
-
-      .social-links a:hover {
-        background: var(--accent);
-        transform: translateY(-3px);
-      }
-
-      .copyright {
-        text-align: center;
-        padding-top: 30px;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        color: var(--gray);
+      footer {
+        margin: 48px 0 16px;
+        color: var(--muted);
         font-size: 0.9rem;
       }
-
-      /* Responsive */
-      @media (max-width: 992px) {
-        .hero {
-          padding: 100px 0 60px;
-        }
-
-        .hero-content {
-          max-width: 100%;
-          text-align: center;
-          padding-top: 40px;
-        }
-
-        .hero-image {
-          position: relative;
-          width: 80%;
-          max-width: 400px;
-          margin: 40px auto 0;
-          transform: none;
-          top: auto;
-          right: auto;
-        }
-
-        .hero-btns {
-          justify-content: center;
-        }
-
-        .pattern {
-          display: none;
-        }
-
-        .section-title h2 {
-          font-size: 2.2rem;
-        }
-
-        .gallery-grid {
-          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      @media (max-width: 720px) {
+        footer .row {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
         }
       }
 
-      @media (max-width: 768px) {
-        .nav-links {
+      /* Utilities */
+      .row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .space {
+        height: 8px;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+
+      /* --- Responsive navigation (burger + light "blu-ray" overlay) --- */
+      @media (max-width: 900px) {
+        .menu-btn {
+          display: inline-flex !important;
+        }
+        .nav-actions {
           display: none;
-          position: absolute;
-          top: 80px;
-          left: 0;
-          right: 0;
-          background: var(--dark);
-          flex-direction: column;
-          padding: 20px;
-          gap: 15px;
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-          text-align: center;
         }
 
-        .nav-links.active {
+        .nav-actions.open {
           display: flex;
-        }
-
-        .hamburger {
-          display: block;
-        }
-
-        .hero-title {
-          font-size: 2.8rem;
-        }
-
-        .hero-subtitle {
-          font-size: 1.3rem;
-        }
-
-        .hero-btns {
+          position: fixed;
+          inset: var(--menu-top, 56px) 0 0 0;
+          padding: 18px;
           flex-direction: column;
-          align-items: center;
+          gap: 12px;
+          background: var(--overlay-solid);
+          color: var(--overlay-ink);
+          z-index: 100;
+          isolation: isolate;
         }
 
-        .section-title h2 {
-          font-size: 2rem;
+        /* “Blu-ray” glow atop solid bg (keeps text readable) */
+        .nav-actions.open::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          background: radial-gradient(
+              80% 50% at 50% -10%,
+              var(--overlay-tint1),
+              transparent 60%
+            ),
+            linear-gradient(
+              180deg,
+              rgba(255, 255, 255, 0.02),
+              var(--overlay-tint2)
+            );
         }
 
-        .skills-container,
-        .projects-container {
-          grid-template-columns: 1fr;
+        .nav-actions.open .btn {
+          background: var(--overlay-btn-bg);
+          border-color: var(--overlay-btn-border);
+          color: var(--overlay-ink);
         }
-
-        .lightbox-nav {
-          width: 50px;
-          height: 50px;
-          font-size: 30px;
+        .nav-actions.open .btn.primary {
+          background: var(--accent);
+          color: #fff;
+          border-color: transparent;
         }
       }
 
-      @media (max-width: 576px) {
-        .hero-title {
-          font-size: 2.3rem;
-        }
-
-        .hero {
-          padding: 80px 0 40px;
-        }
-
-        section {
-          padding: 60px 0;
-        }
-
-        .section-title h2 {
-          font-size: 1.8rem;
-        }
-
-        .lightbox-content {
-          max-width: 95%;
-        }
-
-        .lightbox-nav {
-          width: 40px;
-          height: 40px;
-          font-size: 24px;
-        }
-
-        .lightbox-prev {
-          left: 10px;
-        }
-
-        .lightbox-next {
-          right: 10px;
-        }
+      /* Make header solid while menu is open */
+      body.menu-open header {
+        background: var(--header-solid) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-bottom: 1px solid var(--ring);
       }
     </style>
+
+    <!-- Schema.org structured data (keep Person & WebSite, add WebPage + FAQ) -->
+    <script type="application/ld+json" id="ld-person">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Zohidjon Ma’rufov",
+        "alternateName": "Zohidjon",
+        "url": "https://zohidjohn.uz/",
+        "email": "mailto:contact@zohidjohn.uz",
+        "jobTitle": "SWE Student",
+        "knowsAbout": [
+          "JavaScript",
+          "HTML",
+          "CSS",
+          "Telegram Bots",
+          "Node.js",
+          "Docker"
+        ],
+        "sameAs": [
+          "https://github.com/zohidjohn",
+          "https://www.linkedin.com/in/zohidjon",
+          "https://t.me/ZohidjonMarufov"
+        ]
+      }
+    </script>
+
+    <script type="application/ld+json" id="ld-website">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Zohidjon Portfolio",
+        "url": "https://zohidjohn.uz/",
+        "publisher": { "@type": "Person", "name": "Zohidjon Ma’rufov" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://zohidjohn.uz/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        },
+        "inLanguage": "en"
+      }
+    </script>
+
+    <!-- WebPage (Home) -->
+    <script type="application/ld+json" id="ld-webpage">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Zohidjon — SWE Student & Developer",
+        "url": "https://zohidjohn.uz/",
+        "description": "SWE student from Uzbekistan building minimal web apps and Telegram bots with Node.js.",
+        "about": { "@type": "Person", "name": "Zohidjon Ma’rufov" },
+        "inLanguage": "en"
+      }
+    </script>
+
+    <!-- FAQ (visible content not required, but you can mirror it in-page if you want) -->
+    <script type="application/ld+json" id="ld-faq">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do you build Telegram bots?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes—Node.js/TypeScript, webhooks, Docker, and clean UX flows. I ship minimal, fast bots with clear docs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you have open-source examples?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yep. See my featured projects with live demos and repos on the homepage."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I contact you?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Email me at contact@zohidjohn.uz or message me on Telegram @ZohidjonMarufov."
+            }
+          }
+        ]
+      }
+    </script>
   </head>
+
   <body>
-    <!-- Header -->
-    <header class="header">
-      <div class="container">
-        <nav class="nav">
-          <a href="#" class="nav-brand">Z<span>.</span></a>
-          <div class="nav-links">
-            <a href="#" class="active">Home</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#graphics">Graphic Designs</a>
-            <a href="#contact">Contact</a>
-          </div>
-          <div class="hamburger" id="hamburger">
-            <i class="fas fa-bars"></i>
-          </div>
+    <header>
+      <div class="wrap nav">
+        <div class="row">
+          <span class="brand">Zohidjon</span>
+          <span class="chip">SWE Student</span>
+        </div>
+        <nav class="nav-actions" id="navActions" aria-label="Primary">
+          <a class="btn small ghost" href="#projects">Projects</a>
+          <a class="btn small ghost" href="#about">About</a>
+          <a class="btn small ghost" href="#contact">Contact</a>
+          <a
+            class="btn small ghost"
+            href="https://github.com/zohidjohn"
+            target="_blank"
+            rel="noreferrer"
+            >GitHub</a
+          >
+          <a
+            class="btn small ghost"
+            href="https://www.linkedin.com/in/zohidjon"
+            target="_blank"
+            rel="noreferrer"
+            >LinkedIn</a
+          >
         </nav>
+        <button
+          id="menuToggle"
+          class="btn small ghost menu-btn"
+          aria-expanded="false"
+          aria-controls="navActions"
+          aria-label="Toggle navigation"
+        >
+          ☰
+        </button>
       </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <h1 class="hero-title">Solving Problems with Code & Creativity</h1>
-          <div class="hero-subtitle">Developer & Designer</div>
-          <p class="hero-text">
-            I'm passionate about leveraging technology to solve real-world
-            problems. With expertise in both programming and design, I create
-            solutions that are not only functional but also visually compelling.
-          </p>
-          <div class="hero-btns">
-            <a href="#projects" class="btn">View Projects</a>
-            <a href="#graphics" class="btn btn-outline">Graphic Designs</a>
-          </div>
+    <main class="wrap">
+      <!-- 1. Hero -->
+      <section class="hero">
+        <span class="badge">👋 Hi, I’m Zohidjon</span>
+        <h1>
+          Building clean, fast Telegram bots & web apps — one repo at a time.
+        </h1>
+        <p class="lead">
+          I build Telegram bots (payments, i18n, webhooks) and minimal web apps
+          with Node.js & vanilla JS. Open-source first, clean UX, and live
+          demos.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">🔗 View Projects</a>
+          <a class="btn" href="#contact">📧 Contact Me</a>
+          <a
+            class="btn ghost"
+            href="docs/Resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+            >📄 Download Resume</a
+          >
+          <a
+            class="btn ghost"
+            href="docs/CV.pdf"
+            target="_blank"
+            rel="noreferrer"
+            >📄 Download CV</a
+          >
         </div>
-        <div class="pattern"></div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Skills Section -->
-    <section class="skills" id="skills">
-      <div class="container">
-        <div class="section-title">
-          <h2>Technical Expertise</h2>
-        </div>
-        <div class="skills-container">
-          <div class="skill-category">
-            <h3>Programming</h3>
-            <ul class="skill-list">
-              <li class="skill-item">
-                <div class="skill-icon">
-                  <i class="fab fa-js"></i>
-                </div>
-                <div class="skill-name">JavaScript</div>
-                <div class="skill-level">Intermediate</div>
-              </li>
-              <!-- <li class="skill-item">
-                <div class="skill-icon">
-                  <i class="fab fa-python"></i>
-                </div>
-                <div class="skill-name">Python</div>
-                <div class="skill-level">Beginner</div>
-              </li> -->
-              <!-- <li class="skill-item">
-                <div class="skill-icon">
-                  <i class="fab fa-java"></i>
-                </div>
-                <div class="skill-name">Java</div>
-                <div class="skill-level">Intermediate</div>
-              </li>
-              <li class="skill-item">
-                <div class="skill-icon">
-                  <i class="fas fa-database"></i>
-                </div>
-                <div class="skill-name">SQL</div>
-                <div class="skill-level">Advanced</div>
-              </li> -->
-            </ul>
-          </div>
-
-          <div class="skill-category">
-            <h3>Web Development</h3>
-            <ul class="skill-list">
-              <li class="skill-item">
-                <div class="skill-icon">
-                  <i class="fab fa-react"></i>
-                </div>
-                <div class="skill-name">React.js</div>
-                <div class="skill-level">Beginner</div>
-              </li>
-              <li class="skill-item">
-                <div class="skill-icon">
-                  <i class="fab fa-node-js"></i>
-                </div>
-                <div class="skill-name">Node.js</div>
-                <div class="skill-level">Beginner</div>
-              </li>
-              <li class="skill-item">
-                <div class="skill-icon">
-                  <i class="fab fa-html5"></i>
-                </div>
-                <div class="skill-name">HTML5 & CSS3</div>
-                <div class="skill-level">Intermediate</div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="skill-category">
-            <h3>Design & Tools</h3>
-            <ul class="skill-list">
-              <li class="skill-item">
-                <div class="skill-icon">
-                  <i class="fas fa-paint-brush"></i>
-                </div>
-                <div class="skill-name">Canva Design</div>
-                <div class="skill-level">Intermediate</div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-      <div class="container">
-        <div class="section-title">
-          <h2>Featured Projects</h2>
-        </div>
-        <div class="projects-container">
-          <div class="project-card">
-            <img
-              src="thumbnail"
-              alt="Project"
-              class="project-img"
-            />
-            <div class="project-content">
-              <h3 class="project-title">Project Title</h3>
-              <p class="project-desc">
-                Project description.
-              </p>
-              <div class="project-links">
-                <a href="#" class="project-link"
-                  ><i class="fas fa-external-link-alt"></i> Live Demo</a
-                >
-                <a href="#" class="project-link"
-                  ><i class="fab fa-github"></i> GitHub</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Graphic Design Section -->
-    <section class="graphic-section" id="graphics">
-      <div class="container">
-        <div class="section-title">
-          <h2>Graphic Design Portfolio</h2>
-        </div>
-        <div class="graphic-content">
+      <!-- 2. About -->
+      <section id="about">
+        <div class="card">
+          <h2>About</h2>
           <p>
-            Hey, I’m super into design as a hobby! I love making clean,
-            appealing thumbnails and visuals. Check out some of my work!
+            I’m a student who codes a lot. Focused on vanilla-clean
+            implementations and readable code. I build tools for learning,
+            productivity, and community — from Telegram bots to small web apps
+            like calculators and checkers. Currently exploring better UIs for AI
+            + education.
           </p>
-        </div>
-
-        <div class="gallery-grid">
-          <!-- Design Items -->
-          <div class="gallery-item" data-index="0">
-            <img src="Images/{i}Code Club Logo.png" alt="{i}Code Club Logo" />
-            <div class="item-overlay">
-              <h3 class="item-title">{i}Code Club Logo</h3>
-              <div class="item-category">{i}Code Club</div>
-            </div>
+          <ul
+            style="margin: 10px 0 0 18px; color: var(--muted); line-height: 1.7"
+          >
+            <li>
+              Bots: Node.js/TypeScript, webhooks, Dockerized deploys, GitHub
+              Actions CI.
+            </li>
+            <li>
+              Web: HTML/CSS/JS, accessible UI, fast load, minimal dependencies.
+            </li>
+            <li>
+              Focus: education tech, grading tools, clean UX, open-source.
+            </li>
+          </ul>
+          <div class="space"></div>
+          <div class="skills" aria-label="Skills">
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">Node.js</span>
+            <span class="chip">Docker</span>
           </div>
         </div>
+      </section>
 
-        <!-- <div class="gallery-grid">
-          <div class="gallery-item" data-index="0">
-            <img src="" alt="" />
-            <div class="item-overlay">
-              <h3 class="item-title"></h3>
-              <div class="item-category"></div>
-            </div>
-          </div>
-        </div> -->
-
-        <div class="gallery-grid">
-          <!-- Design Items -->
-          <div class="gallery-item" data-index="0">
-            <img
-              src="Images/SkillForge Club Logo.png"
-              alt="SkillForge Club Logo"
-            />
-            <div class="item-overlay">
-              <h3 class="item-title">SkillForge Club Logo</h3>
-              <div class="item-category">SkillForge</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-grid">
-          <!-- Design Items -->
-          <div class="gallery-item" data-index="0">
-            <img
-              src="Images/SkillForge Club, Opening Ceremony.png"
-              alt="SkillForge Club, Opening Ceremony"
-            />
-            <div class="item-overlay">
-              <h3 class="item-title">SkillForge Club, Opening Ceremony</h3>
-              <div class="item-category">SkillForge</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-grid">
-          <!-- Design Items -->
-          <div class="gallery-item" data-index="0">
-            <img src="Images/Zohid's Notes 1.png" alt="Zohid's Notes" />
-            <div class="item-overlay">
-              <h3 class="item-title">
-                <a href="https://t.me/zohidjons/47">Link to Telegram post</a>
-              </h3>
-              <div class="item-category">Zohid's Notes</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-grid">
-          <!-- Design Items -->
-          <div class="gallery-item" data-index="0">
-            <img src="Images/Zohid's Notes 2.png" alt="Zohid's Notes" />
-            <div class="item-overlay">
-              <h3 class="item-title">
-                <a href="https://t.me/zohidjons/58">Link to Telegram post</a>
-              </h3>
-              <div class="item-category">Zohid's Notes</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-grid">
-          <!-- Design Items -->
-          <div class="gallery-item" data-index="0">
-            <img src="Images/Zohid's Notes 3.png" alt="Zohid's Notes" />
-            <div class="item-overlay">
-              <h3 class="item-title">
-                <a href="https://t.me/zohidjons/66">Link to Telegram post</a>
-              </h3>
-              <div class="item-category">Zohid's Notes</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-grid">
-          <!-- Design Items -->
-          <div class="gallery-item" data-index="0">
-            <img src="Images/Zohid's Notes 4.png" alt="Zohid's Notes" />
-            <div class="item-overlay">
-              <h3 class="item-title">
-                <a href="https://t.me/zohidjons/67">Link to Telegram post</a>
-              </h3>
-              <div class="item-category">Zohid's Notes</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-grid">
-          <!-- Design Items -->
-          <div class="gallery-item" data-index="0">
-            <img src="Images/Zohid's Notes 5.png" alt="Zohid's Notes" />
-            <div class="item-overlay">
-              <h3 class="item-title">
-                <a href="https://t.me/zohidjons/71">Link to Telegram post</a>
-              </h3>
-              <div class="item-category">Zohid's Notes</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-grid">
-          <!-- Design Items -->
-          <div class="gallery-item" data-index="0">
-            <img src="Images/Zohid's Notes 6.png" alt="Zohid's Notes" />
-            <div class="item-overlay">
-              <h3 class="item-title">
-                <a href="https://t.me/zohidjons/68">Link to Telegram post</a>
-              </h3>
-              <div class="item-category">Zohid's Notes</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-grid">
-          <!-- Design Items -->
-          <div class="gallery-item" data-index="0">
-            <img src="Images/Zohid's Notes 7.png" alt="Zohid's Notes" />
-            <div class="item-overlay">
-              <h3 class="item-title">
-                <a href="https://t.me/zohidjons/72">Link to Telegram post</a>
-              </h3>
-              <div class="item-category">Zohid's Notes</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-grid">
-          <!-- Design Items -->
-          <div class="gallery-item" data-index="0">
-            <img src="Images/Zohid's Notes 8.png" alt="Zohid's Notes" />
-            <div class="item-overlay">
-              <h3 class="item-title">
-                <a href="https://t.me/zohidjons/73">Link to Telegram post</a>
-              </h3>
-              <div class="item-category">Zohid's Notes</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-grid">
-          <!-- Design Items -->
-          <div class="gallery-item" data-index="0">
-            <img
-              src="Images/Ibrat Debate Beshariq, Presentation .png"
-              alt="Ibrat Debate Beshariq, Presentation"
-            />
-            <div class="item-overlay">
-              <h3 class="item-title">Ibrat Debate Beshariq, Presentation</h3>
-              <div class="item-category">Ibrat Debate</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-grid">
-          <!-- Design Items -->
-          <div class="gallery-item" data-index="0">
-            <img
-              src="Images/Ibrat Debate Beshariq, Presentation.png"
-              alt="Ibrat Debate Beshariq, Presentation"
-            />
-            <div class="item-overlay">
-              <h3 class="item-title">Ibrat Debate Beshariq, Presentation</h3>
-              <div class="item-category">Ibrat Debate</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-grid">
-          <!-- Design Items -->
-          <div class="gallery-item" data-index="0">
-            <img
-              src="Images/Ibrat Debate, Badge.png"
-              alt="Ibrat Debate, Badge"
-            />
-            <div class="item-overlay">
-              <h3 class="item-title">Ibrat Debate, Badge</h3>
-              <div class="item-category">Ibrat Debate</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-grid">
-          <!-- Design Items -->
-          <div class="gallery-item" data-index="0">
-            <img
-              src="Images/Ibrat Debate, Posts for Telegram.png"
-              alt="Ibrat Debate, Posts for Telegram"
-            />
-            <div class="item-overlay">
-              <h3 class="item-title">/Ibrat Debate, Posts for Telegram</h3>
-              <div class="item-category">Ibrat Debate</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-      <span class="lightbox-close" id="lightbox-close">&times;</span>
-      <div class="lightbox-content">
-        <span class="lightbox-nav lightbox-prev" id="lightbox-prev"
-          >&#10094;</span
+      <!-- 3. Projects -->
+      <section id="projects">
+        <div
+          class="row"
+          style="
+            justify-content: space-between;
+            align-items: end;
+            margin: 0 0 25px 0;
+          "
         >
-        <img class="lightbox-img" id="lightbox-img" />
-        <span class="lightbox-nav lightbox-next" id="lightbox-next"
-          >&#10095;</span
-        >
-        <div class="lightbox-caption" id="lightbox-caption"></div>
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer" id="contact">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-col">
-            <h3>Zohidjon</h3>
-            <p>
-              Solving problems through technology and design. Creating solutions
-              that make a difference.
-            </p>
-            <div class="social-links">
-              <a href="#"><i class="fab fa-github"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
-          </div>
-
-          <div class="footer-col">
-            <h3>Navigation</h3>
-            <ul class="footer-links">
-              <li><a href="#">Home</a></li>
-              <li><a href="#skills">Skills</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#graphics">Graphic Designs</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h3>Contact</h3>
-            <ul class="footer-links">
-              <li><i class="fas fa-envelope"></i> zohidjon@zohidjohn.uz</li>
-              <li><i class="fas fa-map-marker-alt"></i> Fergana, Uzbekistan</li>
-            </ul>
-          </div>
+          <h2 style="margin: 0">Featured Projects</h2>
+          <small style="color: var(--muted)"
+            >Click a card to read details</small
+          >
         </div>
+        <div id="projectsGrid" class="grid" aria-live="polite"></div>
+      </section>
 
-        <div class="copyright">
-          <p>
-            &copy; 2025 Zohidjon. All rights reserved. Designed with ❤️ and
-            code.
+      <!-- 4. Contact -->
+      <section id="contact">
+        <div class="card">
+          <h2>Contact</h2>
+          <p class="lead">
+            Email:
+            <a href="mailto:contact@zohidjohn.uz">contact@zohidjohn.uz</a>
           </p>
+          <div class="row" role="group" aria-label="Contact links">
+            <a class="btn ghost" href="mailto:contact@zohidjohn.uz"
+              >Send Email</a
+            >
+            <a
+              class="btn ghost"
+              href="https://t.me/ZohidjonMarufov"
+              target="_blank"
+              rel="noreferrer"
+              >Telegram</a
+            >
+            <a
+              class="btn ghost"
+              href="https://github.com/zohidjohn"
+              target="_blank"
+              rel="noreferrer"
+              >GitHub</a
+            >
+            <a
+              class="btn ghost"
+              href="https://www.linkedin.com/in/zohidjon"
+              target="_blank"
+              rel="noreferrer"
+              >LinkedIn</a
+            >
+          </div>
         </div>
+      </section>
+
+      <footer>
+        <div class="row" style="justify-content: space-between">
+          <span>© <span id="yy"></span> Zohidjon</span>
+          <span class="row">
+            <a class="btn small ghost" href="mailto:contact@zohidjohn.uz"
+              >contact@zohidjohn.uz</a
+            >
+            <a
+              class="btn small ghost"
+              href="https://github.com/zohidjohn"
+              target="_blank"
+              rel="noreferrer"
+              >GitHub</a
+            >
+            <a
+              class="btn small ghost"
+              href="https://www.linkedin.com/in/zohidjon"
+              target="_blank"
+              rel="noreferrer"
+              >LinkedIn</a
+            >
+            <a
+              class="btn small ghost"
+              href="https://t.me/ZohidjonMarufov"
+              target="_blank"
+              rel="noreferrer"
+              >Telegram</a
+            >
+          </span>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Modal for project details -->
+    <dialog id="projectModal" aria-label="Project details">
+      <div class="modal-head">
+        <strong id="modalTitle"></strong>
+        <button class="btn small ghost" id="modalClose" aria-label="Close">
+          ✖
+        </button>
       </div>
-    </footer>
+      <div class="modal-body" id="modalBody"></div>
+    </dialog>
 
     <script>
-      // Mobile Navigation
-      const hamburger = document.getElementById("hamburger");
-      const navLinks = document.querySelector(".nav-links");
+      // ---- Mobile menu toggle ----
+      const menuToggle = document.getElementById("menuToggle");
+      const navActions = document.getElementById("navActions");
+      const headerEl = document.querySelector("header");
 
-      hamburger.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
+      function closeMenu() {
+        navActions.classList.remove("open");
+        navActions.style.removeProperty("--menu-top");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰";
+        document.body.classList.remove("no-scroll", "menu-open");
+      }
+
+      menuToggle.addEventListener("click", () => {
+        const open = navActions.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+        menuToggle.textContent = open ? "✖" : "☰";
+        document.body.classList.toggle("no-scroll", open);
+        document.body.classList.toggle("menu-open", open);
+        if (open) {
+          navActions.style.setProperty(
+            "--menu-top",
+            headerEl.offsetHeight + "px"
+          );
+        } else {
+          navActions.style.removeProperty("--menu-top");
+        }
       });
 
-      // Close mobile menu when clicking a link
-      document.querySelectorAll(".nav-links a").forEach((link) => {
-        link.addEventListener("click", () => {
-          if (window.innerWidth <= 768) {
-            navLinks.classList.remove("active");
-          }
+      // Close the menu on any link tap
+      navActions
+        .querySelectorAll("a")
+        .forEach((a) => a.addEventListener("click", closeMenu));
+      // Close on Esc
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeMenu();
+      });
+      // Ensure menu closes when resizing up
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 900) closeMenu();
+      });
+
+      // ---- Footer year ----
+      document.getElementById("yy").textContent = new Date().getFullYear();
+
+      // ---- Projects data ----
+      const projects = [
+        {
+          title: "Homework Grade Calculator",
+          summary:
+            "Minimal tool to convert total homework tasks into grade cutoffs with copy-ready comment.",
+          tech: ["HTML", "CSS", "JS"],
+          status: "open-source",
+          demo: "https://zohidjohn.github.io/homework-grade-calculator/",
+          repo: "https://github.com/zohidjohn/homework-grade-calculator",
+          details: `A super-lightweight UI inspired by cards and badges.
+          Features live thresholds (A/B/C/D/E), Inter font, and a one-click Classroom comment copier. Built with vanilla HTML/CSS/JS and deployed on GitHub Pages.`,
+          image: "/images/projects/homework-grade-calculator.jpg",
+        },
+      ];
+
+      // ---- Render projects ----
+      const grid = document.getElementById("projectsGrid");
+
+      function statusPill(status) {
+        const isOS = status === "open-source";
+        return `<span class="pill ${isOS ? "os" : "cs"}">${
+          isOS ? "Open source" : "Closed source"
+        }</span>`;
+      }
+      function techChips(tech) {
+        return tech.map((t) => `<span class="chip">${t}</span>`).join("");
+      }
+      function linkBtn(href, label) {
+        return `<a class="btn small ${
+          label === "Live" ? "primary" : ""
+        }" href="${href}" target="_blank" rel="noreferrer">${label}</a>`;
+      }
+      function projectCard(p, idx) {
+        // NOTE: image tag included with loading="lazy" for SEO + performance
+
+        return `
+          <article class="card project" data-idx="${idx}" tabindex="0" role="button" aria-label="Open ${
+          p.title
+        } details" itemscope itemtype="https://schema.org/SoftwareSourceCode">
+            <meta itemprop="author" content="Zohidjon Ma’rufov" />
+            ${
+              p.repo
+                ? `<meta itemprop="codeRepository" content="${p.repo}" />`
+                : ""
+            }
+            ${p.demo ? `<meta itemprop="url" content="${p.demo}" />` : ""}
+            <div class="row" style="justify-content:space-between; margin-top:8px">
+              <h3 itemprop="name">${p.title}</h3>
+              ${statusPill(p.status)}
+            </div>
+            <p itemprop="description" style="color:var(--muted); margin:4px 0 8px">${
+              p.summary
+            }</p>
+            <div class="meta">${techChips(p.tech)}</div>
+            <div class="links">
+              ${p.demo ? linkBtn(p.demo, "Live") : ""}
+              ${p.repo ? linkBtn(p.repo, "GitHub") : ""}
+            </div>
+          </article>`;
+      }
+
+      function mountProjects() {
+        if (!grid) return;
+        grid.innerHTML = projects.map(projectCard).join("");
+        grid.querySelectorAll(".project").forEach((card) => {
+          card.addEventListener("click", (e) => {
+            if (e.target.closest("a,button")) return; // respect actual links
+            const idx = +card.dataset.idx;
+            openModal(projects[idx]);
+          });
+          card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              const idx = +card.dataset.idx;
+              openModal(projects[idx]);
+            }
+          });
         });
-      });
+      }
 
-      // Lightbox functionality
-      const lightbox = document.getElementById("lightbox");
-      const lightboxImg = document.getElementById("lightbox-img");
-      const lightboxCaption = document.getElementById("lightbox-caption");
-      const closeBtn = document.getElementById("lightbox-close");
-      const prevBtn = document.getElementById("lightbox-prev");
-      const nextBtn = document.getElementById("lightbox-next");
+      // ---- Modal ----
+      const modal = document.getElementById("projectModal");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalBody = document.getElementById("modalBody");
+      const modalClose = document.getElementById("modalClose");
 
-      let currentIndex = 0;
-      const galleryItems = Array.from(
-        document.querySelectorAll(".gallery-item")
+      function openModal(p) {
+        modalTitle.textContent = p.title;
+        modalBody.innerHTML = `
+          <p style="color:var(--muted)">${p.summary}</p>
+          <div class="skills">${techChips(p.tech)}</div>
+          <div class="space"></div>
+          <article class="card">
+            <h3 style="margin:0 0 8px">Details</h3>
+            <p style="margin:0; line-height:1.7">${p.details}</p>
+          </article>
+          <div class="space"></div>
+          <div class="row">
+            ${p.demo ? linkBtn(p.demo, "Live") : ""}
+            ${p.repo ? linkBtn(p.repo, "GitHub") : ""}
+            ${statusPill(p.status)}
+          </div>
+        `;
+        try {
+          modal.showModal();
+        } catch {
+          modal.setAttribute("open", "");
+        }
+      }
+      modalClose.addEventListener("click", () =>
+        modal.close ? modal.close() : modal.removeAttribute("open")
       );
-
-      function openLightbox(index) {
-        currentIndex = index;
-        const imgSrc = galleryItems[index].querySelector("img").src;
-        const caption =
-          galleryItems[index].querySelector(".item-title").textContent;
-
-        lightboxImg.src = imgSrc;
-        lightboxCaption.textContent = caption;
-        lightbox.classList.add("active");
-        document.body.style.overflow = "hidden";
-      }
-
-      function closeLightbox() {
-        lightbox.classList.remove("active");
-        document.body.style.overflow = "auto";
-      }
-
-      function navigate(direction) {
-        currentIndex += direction;
-        if (currentIndex < 0) currentIndex = galleryItems.length - 1;
-        if (currentIndex >= galleryItems.length) currentIndex = 0;
-        openLightbox(currentIndex);
-      }
-
-      // Add click event to all gallery images
-      galleryItems.forEach((item, index) => {
-        item.addEventListener("click", () => {
-          openLightbox(index);
-        });
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal)
+          modal.close ? modal.close() : modal.removeAttribute("open");
       });
 
-      closeBtn.addEventListener("click", closeLightbox);
-      prevBtn.addEventListener("click", () => navigate(-1));
-      nextBtn.addEventListener("click", () => navigate(1));
-
-      // Close lightbox when clicking outside the image
-      lightbox.addEventListener("click", (e) => {
-        if (e.target === lightbox) {
-          closeLightbox();
-        }
-      });
-
-      // Keyboard navigation
-      document.addEventListener("keydown", (e) => {
-        if (lightbox.classList.contains("active")) {
-          if (e.key === "Escape") closeLightbox();
-          if (e.key === "ArrowLeft") navigate(-1);
-          if (e.key === "ArrowRight") navigate(1);
-        }
-      });
-
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute("href");
-          if (targetId === "#") return;
-
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: "smooth",
-            });
-          }
-        });
-      });
+      // Init
+      mountProjects();
     </script>
   </body>
 </html>

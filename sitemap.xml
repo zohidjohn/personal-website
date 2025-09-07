@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://zohidjohn.uz/</loc>
+    <lastmod>2025-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://zohidjohn.uz/projects</loc>
+    <lastmod>2025-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Project detail pages (add these when you create them)
+  <url>
+    <loc>https://zohidjohn.uz/projects/homework-grade-calculator</loc>
+    <lastmod>2025-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  -->
+</urlset>
